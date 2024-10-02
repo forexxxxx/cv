@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV MAKER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>CV MAKER</h1>
+    <form id="cvForm">
+        <h2>«·„⁄·Ê„«  «·‘Œ’Ì…</h2>
+        <label for="fullName">«·«”„ »«·ﬂ«„·:</label>
+        <input type="text" id="fullName" required>
+        
+        <label for="birthDate"> «—ÌŒ «·„Ì·«œ:</label>
+        <input type="date" id="birthDate" required>
+        
+        <label for="jobTitle">«·ÊŸÌ›… «·„—«œ ﬂ «» Â« ›Ì «·”Ì—…:</label>
+        <input type="text" id="jobTitle" required>
+        
+        <label for="mobile">«·„Ê»«Ì·:</label>
+        <input type="tel" id="mobile" required>
+        
+        <label for="maritalStatus">«·Õ«·… «·«Ã „«⁄Ì…:</label>
+        <input type="text" id="maritalStatus" required>
+
+        <h2>«·Œ»—« </h2>
+        <label for="experience1">«·„ﬂ«‰ 1:</label>
+        <input type="text" id="experience1" required>
+        <label for="duration1">„œ… «·⁄„·:</label>
+        <input type="text" id="duration1" required>
+        <label for="position1">«·ÊŸÌ›…:</label>
+        <input type="text" id="position1" required>
+
+        <label for="experience2">«·„ﬂ«‰ 2:</label>
+        <input type="text" id="experience2">
+        <label for="duration2">„œ… «·⁄„·:</label>
+        <input type="text" id="duration2">
+        <label for="position2">«·ÊŸÌ›…:</label>
+        <input type="text" id="position2">
+
+        <label for="experience3">«·„ﬂ«‰ 3:</label>
+        <input type="text" id="experience3">
+        <label for="duration3">„œ… «·⁄„·:</label>
+        <input type="text" id="duration3">
+        <label for="position3">«·ÊŸÌ›…:</label>
+        <input type="text" id="position3">
+
+        <h2>«·„ƒÂ· «·œ—«”Ì</h2>
+        <label for="college">«·ﬂ·Ì…:</label>
+        <input type="text" id="college" required>
+        <label for="degree">«·œ—Ã… «·⁄·„Ì…:</label>
+        <input type="text" id="degree" required>
+        <label for="grade">«· ﬁœÌ—:</label>
+        <input type="text" id="grade" required>
+
+        <h2>«·„Â«—« </h2>
+        <label for="skills">„« ÂÌ «·„Â«—«  «· Ì  —Ìœ ﬂ «» Â«:</label>
+        <input type="text" id="skills" required>
+
+        <h2>«·ﬂÊ—”« </h2>
+        <label for="course1">«”„ «·ﬂÊ—” 1:</label>
+        <input type="text" id="course1" required>
+        <label for="provider1">„‰ «·„ﬁœ„:</label>
+        <input type="text" id="provider1" required>
+        <label for="content1">„Õ ÊÏ «·ﬂÊ—”:</label>
+        <input type="text" id="content1" required>
+
+        <label for="course2">«”„ «·ﬂÊ—” 2:</label>
+        <input type="text" id="course2">
+        <label for="provider2">„‰ «·„ﬁœ„:</label>
+        <input type="text" id="provider2">
+        <label for="content2">„Õ ÊÏ «·ﬂÊ—”:</label>
+        <input type="text" id="content2">
+
+        <button type="submit">≈‰‘«¡ «·”Ì—… «·–« Ì…</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('cvForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Â‰« Ì„ﬂ‰ﬂ ≈÷«›… ﬂÊœ ·≈—”«· «·»Ì«‰«  ≈·Ï Œ«œ„ »«” Œœ«„ Fetch API ≈–« ·“„ «·√„—
+            
+            // ⁄—÷ «·‰ ÌÃ…
+            const result = `
+# «·”Ì—… «·–« Ì… ·‹ ${data.fullName}
+
+## «·„⁄·Ê„«  «·‘Œ’Ì…
+- «·«”„: ${data.fullName}
+-  «—ÌŒ «·„Ì·«œ: ${data.birthDate}
+- «·ÊŸÌ›…: ${data.jobTitle}
+- «·„Ê»«Ì·: ${data.mobile}
+- «·Õ«·… «·«Ã „«⁄Ì…: ${data.maritalStatus}
+
+## «·Œ»—« 
+1. ${data.experience1}
+   - «·„œ…: ${data.duration1}
+   - «·ÊŸÌ›…: ${data.position1}
+2. ${data.experience2}
+   - «·„œ…: ${data.duration2}
+   - «·ÊŸÌ›…: ${data.position2}
+3. ${data.experience3}
+   - «·„œ…: ${data.duration3}
+   - «·ÊŸÌ›…: ${data.position3}
+
+## «·„ƒÂ· «·œ—«”Ì
+- «·ﬂ·Ì…: ${data.college}
+- «·œ—Ã… «·⁄·„Ì…: ${data.degree}
+- «· ﬁœÌ—: ${data.grade}
+
+## «·„Â«—« 
+${data.skills}
+
+## «·ﬂÊ—”« 
+1. ${data.course1}
+   - «·„ﬁœ„: ${data.provider1}
+   - «·„Õ ÊÏ: ${data.content1}
+2. ${data.course2}
+   - «·„ﬁœ„: ${data.provider2}
+   - «·„Õ ÊÏ: ${data.content2}
+            `;
+            
+            document.getElementById('result').innerHTML = marked.parse(result);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+</body>
+</html>
